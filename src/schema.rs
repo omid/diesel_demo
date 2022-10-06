@@ -15,5 +15,7 @@ diesel::table! {
         title -> Varchar,
         body -> Text,
         status -> PostStatus,
+        col1 -> Int4,
+        col2 -> Int4,
     }
 }

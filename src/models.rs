@@ -15,6 +15,8 @@ pub struct Post {
     pub title: String,
     pub body: String,
     pub status: PostStatusEnum,
+    pub col1: i32,
+    pub col2: i32,
 }
 
 #[derive(Insertable)]
@@ -23,6 +25,8 @@ pub struct NewPost<'a> {
     pub title: &'a str,
     pub body: &'a str,
     pub status: PostStatusEnum,
+    pub col1: i32,
+    pub col2: i32,
 }
 
 #[derive(Debug, PartialEq, Eq, FromSqlRow, AsExpression, Clone)]

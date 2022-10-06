@@ -22,10 +22,18 @@ pub fn create_post(conn: &mut PgConnection, title: &str, body: &str) -> Post {
         title,
         body,
         status: PostStatusEnum::Draft,
+        col1: 0,
+        col2: 0
     };
 
     diesel::insert_into(posts::table)
         .values(&new_post)
         .get_result(conn)
         .expect("Error saving new post")
+}
+
+pub fn get_distinct(conn: &mut PgConnection) -> Post {
+    use crate::schema::posts;
+
+    posts::table.distinct_on((posts::col1, posts::col2)).first(conn).unwrap()
 }
